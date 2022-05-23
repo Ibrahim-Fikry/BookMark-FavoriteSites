@@ -21,19 +21,21 @@
             <h1>Bookmark </h1>
         </div>
 
-        <div class="container   d-flex align-items-center bg-success p-5 ">
+        <div class="container    bg-success p-5   ">
 
-            <div class=" w-100 m-auto bg-light text-center p-5 shadow">
+            <div class=" w-100 m-auto bg-light text-center p-5 shadow d-block mb-4">
                 <h1 class="mb-5">Bookmark your favorite sites </h1>
 
                 <label for=" sname " class="mb-3 lbl">Site Name</label>
-                <input type="text" id="sname" class="form-control mb-3">
+                <input type="text" id="sname" class="form-control mb-3 ">
 
                 <label for=" sname " class="mb-3 lbl">Site URL</label>
-                <input type="text" id="sname" class="form-control mb-3">
+                <input type="text" id="surl" class="form-control mb-3">
 
-                <button class="btn btn-info lbl">add site</button>
+                <button class="btn btn-info lbl" id="btn" onclick="add()">add site</button>
             </div>
+
+            <div id="content"></div>
 
         </div>
 
