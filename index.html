@@ -27,10 +27,12 @@
             <div class="form-group">
                 <label for=" sname " class="mb-3 lbl">Site Name</label>
                 <input type="text" id="sname" class="form-control mb-3  " required autocomplete="of">
+                <span class="bg-danger " id="span" style="display:none ;">plese enter site name</span>
             </div>
             <div class="form-group">
                 <label for=" sname " class="mb-3 lbl">Site URL</label>
                 <input type="url" id="surl" class="form-control mb-3" placeholder="https://example.com" required autocomplete="of" pattern="(https?|/).*?">
+                <span class="bg-danger " id="span" style="display:none ;">plese enter site url</span>
             </div>
             <button type="submit" class="btn btn-primary" id="btn" onclick="add()">Submit</button>
         </form>

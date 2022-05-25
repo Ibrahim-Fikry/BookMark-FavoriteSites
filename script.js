@@ -1,12 +1,14 @@
-// -------------------  local storage
+//#region    local storage
 if (localStorage.getItem('data') == null) {
     sites = []
 } else {
     sites = JSON.parse(localStorage.getItem('data'))
     display()
 }
+//#endregion
 
-//----------------------------------------
+//#region   elect elements 
+
 function get() {
     var inputs = {
         name: document.getElementById('sname'),
@@ -14,6 +16,9 @@ function get() {
     }
     return inputs
 }
+//#endregion
+
+//#region   getinfo
 
 function getinfo() {
     var inputsinfo = {
@@ -22,64 +27,74 @@ function getinfo() {
     }
     return inputsinfo
 }
-//------------------------------------validation
 
-//-----------------------------------clear
+//#endregion
+
+//#region   clear
 function clear() {
 
     get().name.value = ""
     get().url.value = ""
 
 }
+
+//#endregion
+//#region   duplicate   not yet
 //------------------------------ duplicate
+// function add() {
+//     for (let index = 0; index < sites.length; index++) {
+//         if (get().name.value != "" && get().url.value != "") {
+
+//             if (
+//                 get().name.value != sites[index].nameinfo && get().url.value != sites[index].urlinfo) {
+//                 index = sites.length
+//                 sites.unshift(getinfo())
+//                 localStorage.setItem('data', JSON.stringify(sites))
+//                 clear()
+//                 Swal.fire(
+//                     'Good job!',
+//                     'Your site was added',
+//                     'success'
+//                 )
+
+//                 display()
+
+//             }
+
+//         } else {
+
+//             Swal.fire({
+//                 title: 'duplicate',
+//                 text: "sites cn`t be repeated",
+//                 icon: 'error',
+//             })
+//         }
+//     }
+
+// }
+//#endregion
+//#region   add         done
 function add() {
-    for (let index = 0; index < sites.length; index++) {
-        if (get().name.value != sites[index].nameinfo && get().url.value != sites[index].urlinfo) {
 
-            sites.unshift(getinfo())
-            localStorage.setItem('data', JSON.stringify(sites))
-            clear()
-            Swal.fire(
-                'Good job!',
-                'Your site was added',
-                'success'
-            )
-            display()
+    if (get().name.value != "" && get().url.value != "") {
 
-        } else {
-            Swal.fire({
-                title: 'duplicate',
-                text: "sites cn`t be repeated",
-                icon: 'error',
-            })
-        }
+        sites.unshift(getinfo())
+            //  override data in local storage 
+        localStorage.setItem('data', JSON.stringify(sites))
+        clear()
+        Swal.fire(
+            'Good job!',
+            'Your site was added',
+            'success'
+        )
+
+        display()
+
     }
 
 }
-//--------------------------------- add 
-// function add() {
-//     if (get().name.value != "" && get().url.value != "") {
-//         sites.unshift(getinfo())
-//         localStorage.setItem('data', JSON.stringify(sites))
-//         clear()
-//         Swal.fire(
-//             'Good job!',
-//             'Your site was added',
-//             'success'
-//         )
-//         display()
-
-//     } else {
-//         Swal.fire({
-//             title: 'not complet!',
-//             text: "please fill all inputs",
-//             icon: 'error',
-//         })
-//     }
-// }
-
-//---------------------------delete
-
+//#endregion
+//#region   delete      done
 
 function delet(id) {
 
@@ -106,6 +121,8 @@ function delet(id) {
         }
     })
 }
+//#endregion
+//#region   display     done
 
 function display() {
     var divv = ""
@@ -132,3 +149,5 @@ function display() {
     }
     document.getElementById('content').innerHTML = divv
 }
+
+//#endregion
