@@ -7,7 +7,7 @@ if (localStorage.getItem('data') == null) {
 }
 //#endregion
 
-//#region   elect elements 
+//#region   select elements 
 
 function get() {
     var inputs = {
@@ -124,6 +124,7 @@ function delet(id) {
 //#endregion
 //#region   display     done
 
+
 function display() {
     var divv = ""
     for (let index = 0; index < sites.length; index++) {
@@ -149,5 +150,48 @@ function display() {
     }
     document.getElementById('content').innerHTML = divv
 }
+
+//#endregion
+//#region   search       done    but i can`t change the color of searching letters 
+
+var thesearch = document.getElementById('search')
+thesearch.setAttribute = ('class', 'form-control')
+thesearch.style.marginBottom = '20px'
+thesearch.addEventListener('keyup', () => {
+    console.log(thesearch.value.in);
+    var divv = ""
+    for (let index = 0; index < sites.length; index++) {
+        if (sites[index].nameinfo.toLowerCase().includes(thesearch.value.toLowerCase())) {
+
+
+
+
+            // حاولت  اغير  اللون بس ماظبطش
+            //.replace(thesearch.value,` <span style="background-color:yellow">${thesearch.value}</span>` )
+            divv += `
+      
+ 
+    
+            <div class=" row w-100 m-auto bg-light text-center p-5 shadow  mb-4 d-flex  ">
+        
+            <div class="col-6">
+            
+                <input type="text" id="sname" class="form-control mb-3 w-100" readonly value=${sites[index].nameinfo}>
+            </div>
+            <div class="col-2">
+                <a href="${sites[index].urlinfo}" target="_blank" id="btn "class="btn btn-info  "> Visit site</a>
+                </div>
+                <div class="col-2">
+                <button class="btn btn-info " id="btn" onclick="delet(${index})">Delet site</button>
+            </div>
+        </div>
+                `
+            console.log(sites);
+        }
+
+    }
+    document.getElementById('content').innerHTML = divv
+})
+
 
 //#endregion
