@@ -136,17 +136,19 @@ function display() {
       
  
     
-    <div class=" row w-100 m-auto bg-light text-center p-5 shadow  mb-4 d-flex  ">
+    <div class=" row w-100 m-auto bg-light  p-5 shadow  mb-4 d-flex  ">
 
     <div class="col-6">
-        <input type="text" id="sname" class="form-control mb-3 w-100" readonly value="${sites[index].nameinfo}">
+    
+        <p id="sname" class="form-control mb-3 w-100">${sites[index].nameinfo}</p>
     </div>
-    <div class="col-2">
-        <a href="${sites[index].urlinfo}" target="_blank" id="btn "class="btn btn-info  "> Visit site</a>
+    
+    <div class="col-4">
+   <div class="d-flex">
+            <a href="${sites[index].urlinfo}" target="_blank" id="btn " class="btn btn-info me-2 "> Visit site</a>
+            <button class="btn btn-info " id="btn" onclick="delet(${index})">Delet site</button>
         </div>
-        <div class="col-2">
-        <button class="btn btn-info " id="btn" onclick="delet(${index})">Delet site</button>
-    </div>
+        </div>
 </div>
         `
         console.log(sites);
@@ -161,33 +163,32 @@ var thesearch = document.getElementById('search')
 thesearch.setAttribute = ('class', 'form-control')
 thesearch.style.marginBottom = '20px'
 thesearch.addEventListener('keyup', () => {
-    console.log(thesearch.value.in);
-    var divv = ""
-    for (let index = 0; index < sites.length; index++) {
-        if (sites[index].nameinfo.toLowerCase().includes(thesearch.value.toLowerCase())) {
+            console.log(thesearch.value.in);
+            var divv = ""
+            for (let index = 0; index < sites.length; index++) {
+                if (sites[index].nameinfo.toLowerCase().includes(thesearch.value.toLowerCase())) {
 
 
 
 
-            // حاولت  اغير  اللون بس ماظبطش
-            //.replace(thesearch.value,` <span style="background-color:yellow">${thesearch.value}</span>` )
-            divv += `
+                    // حاولت  اغير  اللون بس ماظبطش
+                    //.replace(thesearch.value,` <span style="background-color:yellow">${thesearch.value}</span>` )
+                    divv += `
       
  
     
-            <div class=" row w-100 m-auto bg-light text-center p-5 shadow  mb-4 d-flex  ">
+            <div class=" row w-100 m-auto bg-light  p-5 shadow  mb-4 d-flex  ">
         
-            <div class="col-6">
-            
-                <input type="text" id="sname" class="form-control mb-3 w-100" readonly value=${sites[index].nameinfo}>
-            </div>
-            <div class="col-2">
-                <a href="${sites[index].urlinfo}" target="_blank" id="btn "class="btn btn-info  "> Visit site</a>
-                </div>
-                <div class="col-2">
-                <button class="btn btn-info " id="btn" onclick="delet(${index})">Delet site</button>
-            </div>
-        </div>
+                  <div class="col-6">
+                  <p id="sname" class="form-control mb-3 w-100">${sites[index].nameinfo.replace(thesearch.value,` <span style="background-color:yellow">${thesearch.value}</span>` )}</p>
+                  </div>
+                  <div class="col-4">
+                  <div class="d-flex">
+                           <a href="${sites[index].urlinfo}" target="_blank" id="btn " class="btn btn-info me-2 "> Visit site</a>
+                           <button class="btn btn-info " id="btn" onclick="delet(${index})">Delet site</button>
+                       </div>
+                       </div>
+             </div>
                 `
             console.log(sites);
         }
