@@ -1,10 +1,13 @@
 //#region    local storage
-if (localStorage.getItem('data') == null) {
-    sites = []
-} else {
-    sites = JSON.parse(localStorage.getItem('data'))
-    display()
-}
+//but local storage code in recursive function
+(function() {
+    if (localStorage.getItem('data') == null) {
+        sites = []
+    } else {
+        sites = JSON.parse(localStorage.getItem('data'))
+        display()
+    }
+})()
 //#endregion
 
 //#region   select elements 
